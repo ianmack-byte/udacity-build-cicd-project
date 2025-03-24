@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  lint:
+  fe-lint-ci-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +32,7 @@ jobs:
       - name: Run lint
         run: npm run lint
 
-  test:
+  fe-test-ci-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -58,9 +58,9 @@ jobs:
       - name: Run tests
         run: npm run test
 
-  build:
+  build-job:
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [fe-lint-ci-job, fe-test-ci-job]
 
     steps:
       - name: Checkout code

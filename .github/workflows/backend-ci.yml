@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  be-lint-ci-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,7 +25,7 @@ jobs:
     - name: Run Lint
       run: npm run lint
 
-  test:
+  be-test-ci-job:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,8 +43,8 @@ jobs:
     - name: Run Tests
       run: npm test
 
-  build:
-    needs: [lint, test]
+  build-ci-job:
+    needs: [be-lint-ci-job, be-test-ci-job]
     runs-on: ubuntu-latest
 
     steps:
